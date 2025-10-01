@@ -44,7 +44,6 @@ const Footer = () => {
 
         <div className="mt-8 pt-8 border-t border-border text-center">
           <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
-            © {currentYear} Jenusan Yogarajah. Built with <Heart className="w-4 h-4 text-accent fill-accent" /> and React
           </p>
         </div>
       </div>

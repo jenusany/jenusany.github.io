@@ -11,7 +11,7 @@ const About = () => {
     {
       icon: Brain,
       title: "AI & Machine Learning",
-      description: "Fascinated by sentiment analysis and intelligent systems"
+      description: "Fascinated by Artifcial Intelligence and intelligent systems"
     },
     {
       icon: Rocket,
@@ -42,13 +42,7 @@ const About = () => {
             <CardContent className="p-8">
               <h3 className="text-2xl font-display font-bold mb-4 text-gradient">My Journey</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                As a first-year Computer Science student at Western University, I'm on an exciting journey of continuous learning 
-                and growth. My passion for technology started with curiosity about how things work, and has evolved into a 
-                commitment to creating meaningful digital experiences.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                I believe in learning by doing - that's why I've already built multiple projects ranging from sentiment analysis 
-                tools to productivity apps. Each project teaches me something new and pushes my boundaries.
+              Hi, I’m Jenusan — a Computer Science student at Western University with a passion for building tools that make life simpler and more engaging. I enjoy working on projects that blend creativity with problem-solving, from hackathon apps to data-driven tools. Beyond coding, I’m active in my community, organizing events and supporting peers through leadership roles. I’m always eager to learn, collaborate, and create something impactful..
               </p>
             </CardContent>
           </Card>
@@ -57,13 +51,7 @@ const About = () => {
             <CardContent className="p-8">
               <h3 className="text-2xl font-display font-bold mb-4 text-gradient">Beyond Code</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                When I'm not coding, you'll find me exploring new technologies, contributing to open source, or working on 
-                personal projects that solve real-world problems. I'm particularly interested in how AI and machine learning 
-                can be applied to everyday challenges.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                I'm always looking for opportunities to collaborate, learn, and grow. Whether it's a hackathon, open source 
-                project, or innovative startup idea - I'm all in!
+              When I’m not building projects, you’ll probably find me organizing events with my student community, brainstorming creative ideas, or connecting with people. I enjoy taking on leadership roles that bring others together and create memorable experiences. Outside of school and tech, I like exploring new challenges, staying active, and finding ways to give back.
               </p>
             </CardContent>
           </Card>

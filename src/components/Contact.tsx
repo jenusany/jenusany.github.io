@@ -22,11 +22,10 @@ const Contact = () => {
                 <MessageSquare className="w-10 h-10 text-primary-foreground" />
               </div>
               <h3 className="text-2xl font-display font-bold mb-4">
-                Ready to start something amazing?
+              Feel free to connect with me for any reason!
               </h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                Whether you have a project in mind, want to collaborate, or just want to say hi - 
-                I'd love to hear from you. Feel free to reach out through any of these channels.
+                I'm always looking for new opportunities and experiences in life!
               </p>
             </div>
 
@@ -56,9 +55,6 @@ const Contact = () => {
             </div>
 
             <div className="mt-12 pt-8 border-t border-border text-center">
-              <p className="text-sm text-muted-foreground">
-                Based in Ontario, Canada 🇨🇦 | Open to remote opportunities
-              </p>
             </div>
           </CardContent>
         </Card>

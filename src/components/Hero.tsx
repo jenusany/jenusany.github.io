@@ -23,7 +23,7 @@ const Hero = () => {
         </h1>
         
         <h2 className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-8 font-medium">
-          1st Year Computer Science Student @ Western University
+          Computer Science Student @ Western University
         </h2>
         
         <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
