@@ -1,0 +1,18 @@
+.screen {
+  min-height: 100dvh;
+}
+
+.gridArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100dvh - var(--bar-h));
+  padding: 48px 16px 64px;
+}
+
+@media (max-width: 640px) {
+  .gridArea {
+    align-items: flex-start;
+    padding: 80px 16px calc(var(--bar-h) + 24px);
+  }
+}

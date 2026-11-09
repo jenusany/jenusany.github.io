@@ -1,0 +1,128 @@
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  height: var(--bar-h);
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 -3px 8px rgba(0, 0, 0, 0.07));
+}
+
+.clock {
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.time {
+  display: flex;
+  align-items: baseline;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #8c949e;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.time small {
+  margin-left: 8px;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.colon {
+  animation: blink 2s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.date {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #8c949e;
+  white-space: nowrap;
+}
+
+.round {
+  position: absolute;
+  bottom: 30px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  border: 4px solid #c9d0d7;
+  background: radial-gradient(circle at 50% 35%, #ffffff 0%, #eef1f4 60%, #dde3e9 100%);
+  color: #8c949e;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12), inset 0 -3px 6px rgba(0, 0, 0, 0.05);
+  pointer-events: auto;
+  transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.round svg {
+  width: 40px;
+  height: 40px;
+}
+
+.round:hover,
+.round:focus-visible {
+  outline: none;
+  transform: scale(1.08);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-glow), 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.left {
+  left: clamp(16px, 4vw, 56px);
+}
+
+.right {
+  right: clamp(16px, 4vw, 56px);
+}
+
+@media (max-width: 640px) {
+  .round {
+    width: 68px;
+    height: 68px;
+    bottom: 22px;
+  }
+
+  .round svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .time {
+    font-size: 2.1rem;
+  }
+
+  .clock {
+    top: -24px;
+  }
+
+  .date {
+    font-size: 1.1rem;
+    bottom: 26px;
+  }
+}

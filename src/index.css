@@ -1,86 +1,105 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --bg: #e9ecef;
+  --stripe: rgba(255, 255, 255, 0.55);
+  --text: #4b5058;
+  --text-soft: #7d848e;
+  --frame: #d3d9df;
+  --frame-dark: #b9c1ca;
+  --accent: #33c3f0;
+  --accent-glow: rgba(51, 195, 240, 0.55);
+  --panel: #f7f8f9;
+  --bar-h: 150px;
+  --font: "Nunito", "Arial Rounded MT Bold", system-ui, sans-serif;
+}
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-@layer base {
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background-color: var(--bg);
+  background-image: repeating-linear-gradient(180deg, var(--stripe) 0 2px, transparent 2px 6px);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: #1e88e5;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Custom pointer: hide the native cursor only on precise-pointer devices. */
+html.custom-cursor,
+html.custom-cursor * {
+  cursor: none !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Glossy pill button shared by preview and section screens. */
+.pill {
+  min-width: 180px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 3px solid var(--frame);
+  background: linear-gradient(180deg, #ffffff 0%, #eef1f4 55%, #e2e7ec 100%);
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 800;
+  box-shadow: 0 3px 0 var(--frame-dark), 0 6px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pill:hover,
+.pill:focus-visible {
+  transform: translateY(-2px) scale(1.04);
+  border-color: var(--accent);
+  box-shadow: 0 3px 0 var(--frame-dark), 0 0 0 4px var(--accent-glow);
+  outline: none;
+}
+
+.pill:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+@media (max-width: 640px) {
   :root {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-
-    --card: 217 33% 17%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 217 33% 17%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 11%;
-
-    --secondary: 263 70% 50%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 189 94% 43%;
-    --accent-foreground: 222 47% 11%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217 33% 23%;
-    --input: 217 33% 23%;
-    --ring: 217 91% 60%;
-
-    --radius: 0.75rem;
-
-    /* Custom gradient tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(263 70% 50%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(222 47% 11%) 0%, hsl(217 33% 17%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(217 33% 17%) 0%, hsl(217 33% 14%) 100%);
-    
-    /* Glow effects */
-    --glow-primary: 0 0 40px hsl(217 91% 60% / 0.3);
-    --glow-accent: 0 0 30px hsl(189 94% 43% / 0.4);
-    
-    /* Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --bar-h: 110px;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground antialiased;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
-@layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-primary);
-  }
-
-  .glow-primary {
-    box-shadow: var(--glow-primary);
-  }
-
-  .glow-accent {
-    box-shadow: var(--glow-accent);
-  }
-
-  .transition-smooth {
-    transition: var(--transition-smooth);
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

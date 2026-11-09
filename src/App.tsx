@@ -1,27 +1,38 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import { AnimatePresence, MotionConfig } from "framer-motion";
+import { HashRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Cursor } from "./components/Cursor";
+import { MenuScreen } from "./components/MenuScreen";
+import { MuteToggle } from "./components/MuteToggle";
+import { StartScreen } from "./components/StartScreen";
 
-const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <>
+      {location.pathname !== "/" && <MuteToggle />}
+      <AnimatePresence mode="wait">
+        <Routes location={location} // Everything past the start screen shares one key: the menu stays mounted and
+          // channel previews / section pages layer over it.
+          key={location.pathname === "/" ? "start" : "app"}>
+          <Route path="/" element={<StartScreen />} />
+          <Route path="/menu" element={<MenuScreen />} />
+          <Route path="/channel/:id" element={<MenuScreen />} />
+          <Route path="/channel/:id/start" element={<MenuScreen />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+      </AnimatePresence>
+    </>
+  );
+}
 
-export default App;
+export default function App() {
+  return (
+    <HashRouter>
+      <MotionConfig reducedMotion="user">
+        <Cursor />
+        <AnimatedRoutes />
+      </MotionConfig>
+    </HashRouter>
+  );
+}

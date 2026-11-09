@@ -1,0 +1,30 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.cursor[data-visible="false"] {
+  opacity: 0;
+}
+
+.icon {
+  display: block;
+  fill: #ffffff;
+  stroke: #1976d2;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
+  transform-origin: 13px 3px;
+  transform: rotate(-12deg);
+  transition: transform 0.15s ease;
+}
+
+.cursor[data-hover="true"] .icon {
+  transform: rotate(-4deg) scale(1.08);
+}
+
+.cursor[data-pressed="true"] .icon {
+  transform: rotate(-4deg) scale(0.9);
+}

@@ -1,0 +1,93 @@
+.screen {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: radial-gradient(ellipse at 50% 40%, #ffffff 0%, #eef3f7 55%, #dfe6ec 100%);
+  overflow: hidden;
+}
+
+.card {
+  position: relative;
+  max-width: 640px;
+  text-align: center;
+}
+
+.welcome {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.name {
+  margin: 0;
+  font-size: clamp(2.2rem, 7vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: #3a3f47;
+}
+
+.headline {
+  margin: 12px 0 0;
+  font-size: clamp(1rem, 2.6vw, 1.3rem);
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.divider {
+  width: 120px;
+  height: 4px;
+  margin: 36px auto;
+  border-radius: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.prompt {
+  border: none;
+  background: none;
+  padding: 8px 16px;
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+  font-weight: 800;
+  color: #3a3f47;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.footnote {
+  position: absolute;
+  bottom: 24px;
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.bubbles span {
+  position: absolute;
+  bottom: -120px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(51, 195, 240, 0.18));
+  border: 1px solid rgba(51, 195, 240, 0.25);
+  animation-name: rise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(calc(-100vh - 240px)) translateX(30px);
+  }
+}
