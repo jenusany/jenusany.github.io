@@ -48,12 +48,14 @@ export function StartScreen() {
       </div>
 
       <div className={styles.card}>
-        <p className={styles.welcome}>Welcome</p>
-        <h1 className={styles.name}>{profile.name}</h1>
-        <p className={styles.headline}>{profile.headline}</p>
+        <p className={styles.welcome}>
+          Hey! <span className={styles.wave} aria-hidden="true">👋</span>
+        </p>
+        <h1 className={styles.name}>I'm {profile.name}</h1>
+        <p className={styles.headline}>Welcome to my portfolio.</p>
         <div className={styles.divider} />
         <button type="button" className={styles.prompt} onClick={start}>
-          Click anywhere or press any key to start
+          Click anywhere to learn a little about me
         </button>
       </div>
 

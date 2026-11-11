@@ -1,4 +1,4 @@
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Navigate, useMatch, useNavigate, useParams } from "react-router-dom";
 import { findChannel, type Channel } from "../data/channels";
 import { inertProps } from "../lib/inert";
@@ -22,9 +22,10 @@ export function MenuScreen() {
   if (id && !selected) return <Navigate to="/menu" replace />;
   if (inSection && selected?.kind !== "section") return <Navigate to={`/channel/${id}`} replace />;
 
-  const open = (channel: Channel) => {
+  const open = (channel: Channel, tileRect: DOMRect) => {
     sound.select();
-    navigate(`/channel/${channel.id}`);
+    const { top, left, right, bottom } = tileRect;
+    navigate(`/channel/${channel.id}`, { state: { origin: { top, left, right, bottom } } });
   };
 
   return (
@@ -35,16 +36,14 @@ export function MenuScreen() {
       transition={{ duration: 0.45, ease: "easeOut" }}
     >
       <h1 className="visually-hidden">Jenusan Yogarajah: portfolio channels</h1>
-      <LayoutGroup>
-        <main className={styles.gridArea} {...inertProps(!!selected)}>
-          <ChannelGrid selectedId={selected?.id} onOpen={open} />
-        </main>
-        <BottomBar inert={!!selected} />
-        <AnimatePresence>
-          {selected && !inSection && <ChannelPreview key={`preview-${selected.id}`} channel={selected} />}
-          {selected && inSection && <SectionScreen key={`section-${selected.id}`} channel={selected} />}
-        </AnimatePresence>
-      </LayoutGroup>
+      <main className={styles.gridArea} {...inertProps(!!selected)}>
+        <ChannelGrid selectedId={selected?.id} onOpen={open} />
+      </main>
+      <BottomBar inert={!!selected} />
+      <AnimatePresence>
+        {selected && !inSection && <ChannelPreview key={`preview-${selected.id}`} channel={selected} />}
+        {selected && inSection && <SectionScreen key={`section-${selected.id}`} channel={selected} />}
+      </AnimatePresence>
     </motion.div>
   );
 }

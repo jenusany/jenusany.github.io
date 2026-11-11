@@ -8,13 +8,14 @@ export function Projects() {
       {projects.map((project) => (
         <article key={project.title} className={s.panel}>
           <h2>{project.title}</h2>
-          <p className={s.meta}>{project.year}</p>
+          {project.year && <p className={s.meta}>{project.year}</p>}
           <p style={{ marginTop: 12 }}>{project.description}</p>
           <ul className={s.tags} aria-label="Technologies">
             {project.tags.map((tag) => (
               <li key={tag}>{tag}</li>
             ))}
           </ul>
+          {(project.github || project.demo) && (
           <div className={s.links}>
             {project.github && (
               <a className={s.link} href={project.github} target="_blank" rel="noopener noreferrer">
@@ -27,6 +28,7 @@ export function Projects() {
               </a>
             )}
           </div>
+          )}
         </article>
       ))}
     </div>

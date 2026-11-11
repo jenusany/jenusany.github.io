@@ -51,6 +51,13 @@ export const sound = {
     tone(1175, 0.07, 0.18, { type: "triangle", gain: 0.05 });
   },
   back: () => tone(880, 0, 0.16, { type: "triangle", gain: 0.05, endFreq: 440 }),
+  /** Short rising sweep when the character hops between levels. */
+  jump: () => tone(330, 0, 0.18, { type: "square", gain: 0.03, endFreq: 880 }),
+  /** Two bright notes when coins are collected. */
+  coin: () => {
+    tone(1760, 0, 0.07, { type: "square", gain: 0.025 });
+    tone(2349, 0.06, 0.22, { type: "square", gain: 0.025 });
+  },
   start: () => {
     [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.07, 0.25, { type: "sine", gain: 0.05 }));
   },

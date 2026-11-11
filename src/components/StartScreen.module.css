@@ -10,17 +10,28 @@
 
 .card {
   position: relative;
-  max-width: 640px;
+  z-index: 1;
+  max-width: 900px;
   text-align: center;
 }
 
 .welcome {
-  margin: 0 0 8px;
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
+  margin: 0 0 12px;
+  font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+  font-weight: 900;
   color: var(--accent);
+}
+
+.wave {
+  display: inline-block;
+  transform-origin: 70% 80%;
+  animation: wave 2.4s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(16deg); }
+  20%, 40% { transform: rotate(-10deg); }
 }
 
 .name {
@@ -72,6 +83,14 @@
   50% {
     opacity: 0.35;
   }
+}
+
+/* Out of the layout flow so the text stays centered. */
+.bubbles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .bubbles span {

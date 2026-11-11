@@ -5,6 +5,7 @@ import { channelGradient, type Channel } from "../data/channels";
 import { sound } from "../lib/sound";
 import { About } from "../sections/About";
 import { Contact } from "../sections/Contact";
+import { Experience } from "../sections/Experience";
 import { Projects } from "../sections/Projects";
 import { Skills } from "../sections/Skills";
 import styles from "./SectionScreen.module.css";
@@ -12,6 +13,7 @@ import styles from "./SectionScreen.module.css";
 const sections: Record<string, ComponentType> = {
   about: About,
   projects: Projects,
+  experience: Experience,
   skills: Skills,
   contact: Contact,
 };
@@ -41,7 +43,7 @@ export function SectionScreen({ channel }: { channel: Channel }) {
       aria-labelledby="section-title"
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      exit={{ opacity: 0, transition: { duration: 0.25, ease: "easeOut" } }}
       transition={{ duration: 0.35 }}
     >
       <header className={styles.header} style={{ background: channelGradient(channel) }}>

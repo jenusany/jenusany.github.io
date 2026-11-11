@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useEffect, useRef, type KeyboardEvent } from "react";
 import { useLocation } from "react-router-dom";
 import { channelGradient, channels, SLOTS_PER_PAGE, type Channel } from "../data/channels";
@@ -7,7 +6,7 @@ import styles from "./ChannelGrid.module.css";
 
 type Props = {
   selectedId?: string;
-  onOpen: (channel: Channel) => void;
+  onOpen: (channel: Channel, tileRect: DOMRect) => void;
 };
 
 export function ChannelGrid({ selectedId, onOpen }: Props) {
@@ -41,28 +40,20 @@ export function ChannelGrid({ selectedId, onOpen }: Props) {
     <div ref={gridRef} className={styles.grid} onKeyDown={onKeyDown} aria-label="Channels">
       {channels.map((channel) => {
         const Icon = channel.icon;
-        const isSelected = channel.id === selectedId;
         return (
           <button
             key={channel.id}
             type="button"
             className={styles.slot}
             data-channel={channel.id}
-            onClick={() => onOpen(channel)}
+            onClick={(e) => onOpen(channel, e.currentTarget.firstElementChild!.getBoundingClientRect())}
             onMouseEnter={() => sound.hover()}
             aria-label={`${channel.title}: ${channel.tagline}`}
           >
-            {!isSelected && (
-              <motion.div
-                layoutId={`channel-${channel.id}`}
-                className={styles.banner}
-                style={{ background: channelGradient(channel), borderRadius: 14 }}
-                transition={{ type: "spring", stiffness: 260, damping: 32 }}
-              >
-                <Icon className={styles.icon} strokeWidth={1.8} aria-hidden="true" />
-                <span className={styles.title}>{channel.title}</span>
-              </motion.div>
-            )}
+            <div className={styles.banner} style={{ background: channelGradient(channel) }}>
+              <Icon className={styles.icon} strokeWidth={1.8} aria-hidden="true" />
+              <span className={styles.title}>{channel.title}</span>
+            </div>
           </button>
         );
       })}

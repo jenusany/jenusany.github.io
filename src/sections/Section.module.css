@@ -131,3 +131,45 @@
 .center .links {
   justify-content: center;
 }
+
+.heading {
+  margin: 12px 0 -4px;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.roleHead {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 24px;
+}
+
+.org {
+  font-weight: 800;
+  color: #00897b;
+}
+
+.roleHead .meta {
+  text-align: right;
+  line-height: 1.5;
+}
+
+.points {
+  margin: 14px 0 0;
+  padding-left: 20px;
+  line-height: 1.7;
+}
+
+.points li + li {
+  margin-top: 6px;
+}
+
+@media (max-width: 640px) {
+  .roleHead .meta {
+    text-align: left;
+  }
+}
